@@ -2,12 +2,14 @@ const path = require('path'); // Webpack path spraudnis
 const TerserPlugin = require('terser-webpack-plugin'); // Minificēšanas plugins
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, './dist'),
+    publicPath: '',
   },
   mode: 'none',
   module: {
@@ -44,5 +46,6 @@ module.exports = {
       filename: 'styles.[contenthash].css',
     }),
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin(),
   ],
 };

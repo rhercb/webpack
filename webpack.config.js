@@ -14,6 +14,10 @@ module.exports = {
         test: /\.(png|jpg)$/, // Kādiem failiem tas ir jāizmanto
         use: ['file-loader'], // Kādu loader jāizmanto
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
 };

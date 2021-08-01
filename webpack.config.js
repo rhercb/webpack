@@ -1,4 +1,5 @@
 const path = require('path'); // Webpack path spraudnis
+const TerserPlugin = require('terser-webpack-plugin'); // Minificēšanas plugins
 
 module.exports = {
   entry: './src/index.js',
@@ -35,4 +36,5 @@ module.exports = {
       },
     ],
   },
+  plugins: [new TerserPlugin()],
 };

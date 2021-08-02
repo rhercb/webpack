@@ -5,3 +5,5 @@ Loader
 Mode
 
 - none, development, production
+
+MPA - multiple page applications

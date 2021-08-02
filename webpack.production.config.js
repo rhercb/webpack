@@ -52,9 +52,16 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      filename: 'hello-world.html',
+      chunks: ['hello-world'], // Nāko no entry nosaukumiem
       title: 'Hello world',
-      template: 'src/index.hbs',
-      title: 'Some description',
+      template: 'src/page-template.hbs',
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'my-image.html',
+      chunks: ['my-image'],
+      title: 'Hello world',
+      template: 'src/page-template.hbs',
     }),
   ],
 };

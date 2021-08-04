@@ -2,6 +2,7 @@ const path = require('path'); // Webpack path spraudnis
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
   entry: './src/image.js',
@@ -55,6 +56,13 @@ module.exports = {
       filename: 'my-image.html',
       title: 'Hello world',
       template: 'src/page-template.hbs',
+    }),
+    new ModuleFederationPlugin({
+      name: 'MyImage', // App name
+      remotes: {
+        // Kurus failus jeb exposes no cita projekta izmantot/iekļaut
+        HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEnty.js',
+      },
     }),
   ],
 };

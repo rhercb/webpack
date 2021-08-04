@@ -1,3 +1,19 @@
+import NavigationBar from './components/navigation-bar/navigation-bar.js';
+
+const navigationItems = [
+  {
+    url: '/hello-world-page',
+    title: 'Hello World Page',
+  },
+  {
+    url: '/my-image-page',
+    title: 'My Image Page',
+  },
+];
+
+const navigationBar = new NavigationBar();
+navigationBar.render(navigationItems);
+
 const url = window.location.pathname;
 
 if (url == '/hello-world-page') {
@@ -6,7 +22,7 @@ if (url == '/hello-world-page') {
     const helloWorldPage = new HelloWorldPage();
     helloWorldPage.render();
   });
-} else if (url === '/my-image') {
+} else if (url === '/my-image-page') {
   import('MyImageApp/MyImagePage').then((MyImagePageModule) => {
     const MyImagePage = MyImagePageModule.default;
     const myImagePage = new MyImagePage();

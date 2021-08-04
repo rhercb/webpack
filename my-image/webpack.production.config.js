@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js', // name tiek paņemt no entry point
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/static',
+    publicPath: '/static/',
   },
   mode: 'production',
   optimization: {
@@ -58,10 +58,10 @@ module.exports = {
       template: 'src/page-template.hbs',
     }),
     new ModuleFederationPlugin({
-      name: 'MyImage', // App name
+      name: 'MyImageApp', // App name
       remotes: {
         // Kurus failus jeb exposes no cita projekta izmantot/iekļaut
-        HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEnty.js',
+        HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js',
       },
     }),
   ],

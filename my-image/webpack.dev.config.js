@@ -56,7 +56,7 @@ module.exports = {
       name: 'MyImage', // App name
       remotes: {
         // Kurus failus jeb exposes no cita projekta izmantot/iekļaut
-        HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEnty.js',
+        HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js',
       },
     }),
   ],

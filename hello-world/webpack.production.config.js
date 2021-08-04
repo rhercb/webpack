@@ -1,6 +1,7 @@
 const path = require('path'); // Webpack path spraudnis
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
@@ -52,7 +53,7 @@ module.exports = {
       template: 'src/page-template.hbs',
     }),
     new ModuleFederationPlugin({
-      name: 'Hello world', // App name
+      name: 'HelloWorldApp', // App name
       filename: 'remoteEntry.js',
       exposes: {
         './HelloWorldButton':

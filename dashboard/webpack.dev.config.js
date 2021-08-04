@@ -4,25 +4,24 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-  entry: './src/hello-world.js',
+  entry: './src/dashboard.js',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, './dist'),
-    publicPath: 'http://localhost:9001/',
+    publicPath: 'http://localhost:9000/',
   },
   mode: 'development',
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
-    index: 'hello-world.html',
-    port: 9001,
-    writeToDisk: true,
+    index: 'dashboard.html',
+    port: 9000,
+    historyApiFallback: {
+      // Always return dashboard html no matter wath url we are using
+      index: 'dashboard.html',
+    },
   },
   module: {
     rules: [
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -34,26 +33,19 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.hbs$/,
-        use: ['handlebars-loader'],
-      },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'hello-world.html',
-      title: 'Hello world',
-      template: 'src/page-template.hbs',
+      filename: 'dashbord.html',
+      title: 'Dashboard',
     }),
     new ModuleFederationPlugin({
-      name: 'HelloWorldApp', // App name
-      filename: 'remoteEntry.js',
-      exposes: {
-        // Komponentes kuras varēs izmantot citas applikācijas
-        './HelloWorldPage':
-          './src/components/hello-world-page/hello-world-page.js',
+      name: 'App',
+      remotes: {
+        HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js',
+        MyImageApp: 'MyImageApp@http://localhost:9002/remoteEntry.js',
       },
     }),
   ],

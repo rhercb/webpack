@@ -56,8 +56,6 @@ module.exports = {
       name: 'HelloWorldApp', // App name
       filename: 'remoteEntry.js',
       exposes: {
-        './HelloWorldButton':
-          './src/components/hello-world-button/hello-world-button.js', // Komponentes kuras varēs izmantot citas applikācijas
         './HelloWorldPage':
           './src/components/hello-world-page/hello-world-page.js',
       },

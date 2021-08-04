@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, './dist'),
-    publicPath: '',
+    publicPath: 'http://localhost:9002/',
   },
   mode: 'development',
   devServer: {
@@ -53,10 +53,10 @@ module.exports = {
       template: 'src/page-template.hbs',
     }),
     new ModuleFederationPlugin({
-      name: 'MyImage', // App name
-      remotes: {
-        // Kurus failus jeb exposes no cita projekta izmantot/iekļaut
-        HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js',
+      name: 'MyImageApp', // App name
+      filename: 'remoteEntry.js',
+      exposes: {
+        './MyImagePage': './src/components/MyImagePage/my-image-page.js',
       },
     }),
   ],

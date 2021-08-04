@@ -11,7 +11,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js', // name tiek paņemt no entry point
     path: path.resolve(__dirname, './dist'),
-    publicPath: '',
+    publicPath: '/static',
   },
   mode: 'production',
   optimization: {

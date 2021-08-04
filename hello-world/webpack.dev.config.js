@@ -53,6 +53,8 @@ module.exports = {
       exposes: {
         './HelloWorldButton':
           './src/components/hello-world-button/hello-world-button.js', // Komponentes kuras varēs izmantot citas applikācijas
+        './HelloWorldPage':
+          './src/components/hello-world-page/hello-world-page.js',
       },
     }),
   ],
